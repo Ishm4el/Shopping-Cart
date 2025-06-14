@@ -7,3 +7,5 @@ set up the api shop url variable:
 ```
 VITE_APP_API_URL=
 ```
+
+for this application, we're using the public api "https://fakestoreapi.com/"
