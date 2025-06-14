@@ -16,9 +16,10 @@ export default function App() {
   return (
     <>
       <NavigationMenu title={WEBSITE_TITLE} logo={siteLogo} links={links} />
-      <body className={styles["body"]}>
+      <main className={styles["main"]}>
         <Outlet />
-      </body>
+      </main>
     </>
   );
 }
+  

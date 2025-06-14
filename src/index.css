@@ -91,4 +91,5 @@ h6 {
 :root {
   --navigation-height: 5dvh;
   --main-height: 95dvh;
+  --body-margin: 20dvw;
 }
