@@ -1,9 +1,11 @@
+import "./pages.css";
+
 export default function Shop() {
   return (
-    <section>
-      <h1>Shop</h1>
-      <article>
-        <h2>Shop Items</h2>
+    <section className="section">
+      <h1 className="section-title">Shop</h1>
+      <article className="article">
+        <h2 className="article-title">Shop Items</h2>
       </article>
     </section>
   );
