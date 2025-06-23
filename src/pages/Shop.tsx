@@ -19,6 +19,9 @@ function ShopList() {
                 alt={product.image}
               />
             </div>
+            <p className="product-rating">
+              Rating: {product.rating.rate} ({product.rating.count})
+            </p>
             <h3 className="product-title">{product.title}</h3>
             <p className="product-price">Price: {product.price}</p>
             {/* <p className="product-description">{product.description}</p> */}
