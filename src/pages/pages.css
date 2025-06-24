@@ -79,3 +79,30 @@ p {
   text-wrap: wrap;
   overflow: hidden;
 }
+
+@media (max-width: 1000px) {
+  .list-product {
+    gap: 2vh;
+  }
+
+  .card-product {
+    flex: 1 0 45%;
+  }
+
+  .product-image-container {
+    width: 20vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .card-product {
+    flex: 1 0 90%;
+    padding: 2vw;
+  }
+
+  .product-image-container {
+    width: 100%;
+    height: 70%;
+    padding: 0 5vw;
+  }
+}
