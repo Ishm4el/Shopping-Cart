@@ -15,7 +15,7 @@
 
 .list-product {
   list-style: none;
-  padding: 0;
+  padding: 5px 5px;
   margin: 0;
   /* display: grid;
   grid-template-columns: repeat(4, 1fr); */
@@ -23,17 +23,23 @@
   flex-flow: row wrap;
   overflow: scroll;
   height: auto;
-  gap: 0.5%;
+  gap: 1%;
 }
 
 .card-product {
-  border: 1px solid black;
+  box-shadow: 0 0px 3px 2px rgba(0, 0, 0, 0.2),
+    0 1.5px 5px 0 rgba(0, 0, 0, 0.19);
+  /* border: 1px solid black; */
   flex: 1 0 23%;
   display: flex;
   flex-flow: column;
-  margin: 0 0 2vh 0;
+  margin: 1px 1px 2vh 1px;
   height: 38vh;
   padding: 0.25vh;
+  &:hover {
+    box-shadow: 0 0px 3px 0px hsl(var(--color1), 100%, 50%),
+      0 1.5px 5px 0 hsl(var(--color1), 100%, 50%);
+  }
 }
 
 .product-image-container {
@@ -43,11 +49,27 @@
   max-width: 100%;
   height: 50%;
   width: 10vw;
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  /* background: linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(
+        45deg,
+        hsl(var(--color1), 100%, 50%),
+        hsl(var(--color2), 100%, 50%)
+      )
+      border-box; */
+}
+
+.product-image-container:hover {
+  /* border-image: linear-gradient(
+    45deg,
+    hsl(var(--color1), 100%, 50%),
+    hsl(var(--color2), 100%, 50%)
+  ); */
+  /* border: 1px solid #0000; */
+  cursor: pointer;
 }
 
 .product-image {
@@ -63,9 +85,13 @@
   width: 100%;
   height: calc(1.17rem * 4);
   margin: 0.25vw;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .product-rating {
+  box-shadow: 0 -0.9px 0 0 black;
   margin: 0.25vw;
 }
 
