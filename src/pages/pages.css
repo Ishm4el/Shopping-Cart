@@ -40,6 +40,12 @@
     box-shadow: 0 0px 3px 0px hsl(var(--color1), 100%, 50%),
       0 1.5px 5px 0 hsl(var(--color1), 100%, 50%);
   }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0px 3px 0px hsl(var(--color1), 100%, 50%),
+      0 1.5px 5px 0 hsl(var(--color1), 100%, 50%);
+  }
 }
 
 .product-image-container {
@@ -53,6 +59,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  &:hover + .product-rating {
+    box-shadow: 0 -0.9px 0 0 hsl(var(--color3), 100%, 50%);
+  }
   /* background: linear-gradient(#ffffff, #ffffff) padding-box,
     linear-gradient(
         45deg,
@@ -87,17 +96,21 @@
   margin: 0.25vw;
   &:hover {
     cursor: pointer;
+    color: hsl(var(--color3), 100%, 10%);
+    text-decoration: underline;
   }
 }
 
 .product-rating {
   box-shadow: 0 -0.9px 0 0 black;
   margin: 0.25vw;
+  cursor: default;
 }
 
 .product-price {
   margin-top: auto;
   align-self: center;
+  cursor: default;
 }
 
 p {

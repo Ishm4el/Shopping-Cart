@@ -11,7 +11,7 @@ function ShopList() {
     return (
       <ul className="list-product">
         {products.map((product: Product) => (
-          <li className="card-product" key={product.id}>
+          <li className="card-product" key={product.id} tabIndex={0}>
             <div className="product-image-container">
               <img
                 className="product-image"
