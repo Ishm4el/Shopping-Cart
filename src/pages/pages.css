@@ -46,6 +46,15 @@
     box-shadow: 0 0px 3px 0px hsl(var(--color1), 100%, 50%),
       0 1.5px 5px 0 hsl(var(--color1), 100%, 50%);
   }
+
+  &:focus .product-title {
+    color: hsl(var(--color3), 100%, 10%);
+    text-decoration: underline;
+  }
+
+  &:focus .product-rating {
+    box-shadow: 0 -0.9px 0 0 hsl(var(--color3), 100%, 50%);
+  }
 }
 
 .product-image-container {
