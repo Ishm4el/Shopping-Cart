@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import "./pages.css";
 import "./ShopDialog.css";
 import useFetchGet from "../components/useFetchGet";
+import useShoppingCartContext from "../components/useShoppingCartContext";
 
 const CURRENCY: string = "$";
 
@@ -43,6 +44,7 @@ function ShopItemDialog({ dialogRef, itemId, closeDialog }: ShopItemDialog) {
   const [product, setProduct] = useState<Product | null>(null);
   const [quantity, setQuantity] = useState(1);
   useFetchGet({ link: `products/${itemId}`, setter: setProduct });
+  const { setCart } = useShoppingCartContext();
   return (
     <dialog
       ref={dialogRef}
@@ -111,8 +113,19 @@ function ShopItemDialog({ dialogRef, itemId, closeDialog }: ShopItemDialog) {
             <button
               tabIndex={0}
               className="product-dialog-button-append"
-              onClick={(e) => {
-                alert(`Adding ${quantity} ${product.id} to the cart`);
+              onClick={() => {
+                setCart(
+                  (prev: Cart): Cart => ({
+                    ...prev,
+                    [product.id]: {
+                      image: product.image,
+                      price: product.price,
+                      title: product.title,
+                      quantity,
+                    },
+                  })
+                );
+                alert("Item has been added!");
               }}
             >
               Add to Cart

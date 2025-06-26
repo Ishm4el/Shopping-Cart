@@ -1,7 +1,12 @@
 /// <reference types="vite/client" />
 
 interface Cart {
-  [key: string]: { title: string; price: number; image: string };
+  [key: string]: {
+    title: string;
+    price: number;
+    quantity: number;
+    image: string;
+  };
 }
 
 interface CartContext {

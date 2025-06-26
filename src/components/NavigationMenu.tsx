@@ -1,5 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./NavigationMenu.module.css";
+import { useRef } from "react";
+import useShoppingCartContext from "./useShoppingCartContext";
 
 export default function NavigationMenu({
   logo,
@@ -46,6 +48,17 @@ function RightLinks({ link }: { link: { title: string; hyperlink: string } }) {
 }
 
 function Right({ links }: { links: { title: string; hyperlink: string }[] }) {
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
+  const { cart } = useShoppingCartContext();
+
+  const openDialog = () => {
+    if (dialogRef.current) dialogRef.current.showModal();
+  };
+
+  const closeDialog = () => {
+    if (dialogRef.current) dialogRef.current.close();
+  };
+
   return (
     <div className={styles["right"]}>
       <ul className={styles["ul"]}>
@@ -53,7 +66,25 @@ function Right({ links }: { links: { title: string; hyperlink: string }[] }) {
           <RightLinks link={link} />
         ))}
         <li>
-          <a className={styles["shopping-cart"]}>Cart</a>
+          <a
+            className={styles["shopping-cart"]}
+            onClick={openDialog}
+            tabIndex={0}
+          >
+            Cart
+          </a>
+          <dialog
+            ref={dialogRef}
+            onClick={closeDialog}
+            className={styles["dialog"]}
+          >
+            <div
+              className={styles["shopping-cart-content"]}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {JSON.stringify(cart)}
+            </div>
+          </dialog>
         </li>
       </ul>
     </div>
