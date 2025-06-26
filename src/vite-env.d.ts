@@ -1,5 +1,14 @@
 /// <reference types="vite/client" />
 
+interface Cart {
+  [key: string]: { title: string; price: number; image: string };
+}
+
+interface CartContext {
+  cart: Cart;
+  setCart: React.Dispatch<any>;
+}
+
 interface Product {
   id: string;
   title: string;

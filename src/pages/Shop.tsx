@@ -49,11 +49,15 @@ function ShopItemDialog({ dialogRef, itemId, closeDialog }: ShopItemDialog) {
       key={`dialog_${itemId}`}
       className="product-dialog"
       tabIndex={-1}
+      onClick={() => closeDialog()}
     >
       {product === null ? (
         <>Loading</>
       ) : (
-        <div className="product-dialog-content-container">
+        <div
+          className="product-dialog-content-container"
+          onClick={(e) => e.stopPropagation()}
+        >
           <img
             className="product-dialog-image"
             src={product.image}

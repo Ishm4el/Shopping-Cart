@@ -45,3 +45,12 @@
 .link:hover {
   color: hsl(var(--color3), 100%, 70%);
 }
+
+.shopping-cart {
+  color: hsl(calc(var(--color4)), 100%, 40%);
+  text-decoration: solid;
+}
+
+.shopping-cart:hover {
+  cursor: pointer;
+}

@@ -28,7 +28,9 @@ function Left({ logo, title }: { logo: string; title: string }) {
         alt="Site_Logo"
         onClick={() => navigate("/")}
       />
-      <Link to={"/"} className={styles["link"]}>{title}</Link>
+      <Link to={"/"} className={styles["link"]}>
+        {title}
+      </Link>
     </div>
   );
 }
@@ -36,7 +38,9 @@ function Left({ logo, title }: { logo: string; title: string }) {
 function RightLinks({ link }: { link: { title: string; hyperlink: string } }) {
   return (
     <li>
-      <Link to={link.hyperlink} className={styles["link"]}>{link.title}</Link>
+      <Link to={link.hyperlink} className={styles["link"]}>
+        {link.title}
+      </Link>
     </li>
   );
 }
@@ -48,6 +52,9 @@ function Right({ links }: { links: { title: string; hyperlink: string }[] }) {
         {links.map((link) => (
           <RightLinks link={link} />
         ))}
+        <li>
+          <a className={styles["shopping-cart"]}>Cart</a>
+        </li>
       </ul>
     </div>
   );
