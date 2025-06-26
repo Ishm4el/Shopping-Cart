@@ -44,7 +44,12 @@ function ShopItemDialog({ dialogRef, itemId, closeDialog }: ShopItemDialog) {
   const [quantity, setQuantity] = useState(1);
   useFetchGet({ link: `products/${itemId}`, setter: setProduct });
   return (
-    <dialog ref={dialogRef} key={`dialog_${itemId}`} className="product-dialog">
+    <dialog
+      ref={dialogRef}
+      key={`dialog_${itemId}`}
+      className="product-dialog"
+      tabIndex={-1}
+    >
       {product === null ? (
         <>Loading</>
       ) : (
@@ -71,13 +76,13 @@ function ShopItemDialog({ dialogRef, itemId, closeDialog }: ShopItemDialog) {
           <div className="product-dialog-controlls">
             <button
               className="product-dialog-button-close"
-              autoFocus
+              // autoFocus
               onClick={closeDialog}
               onKeyUp={(e) => {
                 if (e.key === "Enter") closeDialog();
               }}
-              onKeyDown={(e) => {
-                e.preventDefault();
+              onKeyDown={async (e) => {
+                if (e.key !== "Tab") e.preventDefault();
                 if (e.key === " ") closeDialog();
               }}
             >
@@ -87,6 +92,7 @@ function ShopItemDialog({ dialogRef, itemId, closeDialog }: ShopItemDialog) {
               Quantity:{" "}
             </label>
             <input
+              tabIndex={0}
               type="number"
               name="quantity"
               id="quantity"
@@ -99,6 +105,7 @@ function ShopItemDialog({ dialogRef, itemId, closeDialog }: ShopItemDialog) {
               }}
             />
             <button
+              tabIndex={0}
               className="product-dialog-button-append"
               onClick={(e) => {
                 alert(`Adding ${quantity} ${product.id} to the cart`);
