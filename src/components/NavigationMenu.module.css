@@ -48,9 +48,68 @@
 
 .shopping-cart {
   color: hsl(calc(var(--color4)), 100%, 40%);
-  text-decoration: solid;
+  text-decoration: underline;
 }
 
 .shopping-cart:hover {
   cursor: pointer;
+}
+
+.dialog {
+  justify-self: center;
+  align-self: center;
+  box-sizing: border-box;
+  padding: 2.5vw 5vw;
+  background-color: white;
+  border: 1px solid hsl(var(--color3), 100%, 50%);
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 65vw;
+  height: 85vh;
+  max-height: 85vh;
+}
+
+.dialog-content {
+  height: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vh;
+}
+
+.cart-list {
+  padding: 0;
+  margin-top: 0;
+}
+
+.cart-list-item {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  gap: 2vw;
+  margin-top: 1vh;
+}
+
+.cart-list-item:first {
+  margin-top: 0;
+}
+
+.dialog-item-image {
+  display: inline;
+  height: 50px;
+  width: 50px;
+  object-fit: scale-down;
+}
+
+.dialog-total-price {
+  margin-top: auto;
+}
+
+.dialog-controls {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
