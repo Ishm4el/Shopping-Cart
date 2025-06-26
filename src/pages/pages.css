@@ -41,18 +41,18 @@
       0 1.5px 5px 0 hsl(var(--color1), 100%, 50%);
   }
 
-  &:focus {
+  &:focus-visible {
     outline: none;
     box-shadow: 0 0px 3px 0px hsl(var(--color1), 100%, 50%),
       0 1.5px 5px 0 hsl(var(--color1), 100%, 50%);
   }
 
-  &:focus .product-title {
+  &:focus-visible .product-title {
     color: hsl(var(--color3), 100%, 10%);
     text-decoration: underline;
   }
 
-  &:focus .product-rating {
+  &:focus-visible .product-rating {
     box-shadow: 0 -0.9px 0 0 hsl(var(--color3), 100%, 50%);
   }
 }
@@ -126,17 +126,6 @@ p {
   overflow-wrap: break-word;
   text-wrap: wrap;
   overflow: hidden;
-}
-
-.product-dialog {
-  justify-self: center;
-  align-self: center;
-  width: 210px;
-  padding: 10px;
-  background-color: white;
-  border: 1px solid hsl(var(--color3), 100%, 50%);
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 body:has(.product-dialog[open]) {

@@ -1,7 +1,117 @@
-import { useRef, useState, type EventHandler } from "react";
-
+import { useRef, useState } from "react";
 import "./pages.css";
+import "./ShopDialog.css";
 import useFetchGet from "../components/useFetchGet";
+
+const CURRENCY: string = "$";
+
+function ShopItemCard({ product, openDialog }: ShopItemCard) {
+  return (
+    <li
+      className="card-product"
+      key={product.id}
+      tabIndex={0}
+      onClick={openDialog}
+      onFocusCapture={(e) => e.preventDefault()}
+      onKeyUp={(e) => {
+        if (e.key === "Enter") openDialog();
+      }}
+      onKeyDown={(e) => {
+        if (e.key === " ") openDialog();
+      }}
+    >
+      <div className="product-image-container">
+        <img
+          className="product-image"
+          src={product.image}
+          alt={product.image}
+        />
+      </div>
+      <p className="product-rating">
+        Rating: {product.rating.rate}/5 ({product.rating.count})
+      </p>
+      <h3 className="product-title">{product.title}</h3>
+      <p className="product-price">
+        Price: {CURRENCY}
+        {product.price}
+      </p>
+    </li>
+  );
+}
+
+function ShopItemDialog({ dialogRef, itemId, closeDialog }: ShopItemDialog) {
+  const [product, setProduct] = useState<Product | null>(null);
+  const [quantity, setQuantity] = useState(1);
+  useFetchGet({ link: `products/${itemId}`, setter: setProduct });
+  return (
+    <dialog ref={dialogRef} key={`dialog_${itemId}`} className="product-dialog">
+      {product === null ? (
+        <>Loading</>
+      ) : (
+        <div className="product-dialog-content-container">
+          <img
+            className="product-dialog-image"
+            src={product.image}
+            alt={product.image}
+          />
+          <div className="product-dialog-metainfo">
+            <p className="product-category">{product.category}</p>
+            <p className="product-dialog-rating">
+              Rating: {product.rating.rate}/5 ({product.rating.count})
+            </p>
+          </div>
+          <h2 className="product-dialog-title">{product.title}</h2>
+          <span className="product-dialog-price">
+            {CURRENCY}
+            {product.price}
+          </span>
+          <span className="product-dialog-description">
+            {product.description}
+          </span>
+          <div className="product-dialog-controlls">
+            <button
+              className="product-dialog-button-close"
+              autoFocus
+              onClick={closeDialog}
+              onKeyUp={(e) => {
+                if (e.key === "Enter") closeDialog();
+              }}
+              onKeyDown={(e) => {
+                e.preventDefault();
+                if (e.key === " ") closeDialog();
+              }}
+            >
+              Close
+            </button>
+            <label htmlFor="quantity" className="label">
+              Quantity:{" "}
+            </label>
+            <input
+              type="number"
+              name="quantity"
+              id="quantity"
+              maxLength={2}
+              max={99}
+              size={2}
+              value={quantity}
+              onInput={(e) => {
+                setQuantity(Number.parseInt(e.currentTarget.value));
+              }}
+            />
+            <button
+              className="product-dialog-button-append"
+              onClick={(e) => {
+                alert(`Adding ${quantity} ${product.id} to the cart`);
+              }}
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      )}
+    </dialog>
+  );
+}
 
 function ShopItem({ product }: { product: Product }) {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
@@ -16,53 +126,12 @@ function ShopItem({ product }: { product: Product }) {
 
   return (
     <>
-      <li
-        className="card-product"
-        key={product.id}
-        tabIndex={0}
-        onClick={openDialog}
-        onKeyUp={(e) => {
-          if (e.key === "Enter") openDialog();
-        }}
-        onKeyDown={(e) => {
-          if (e.key === " ") openDialog();
-        }}
-      >
-        <div className="product-image-container">
-          <img
-            className="product-image"
-            src={product.image}
-            alt={product.image}
-          />
-        </div>
-        <p className="product-rating">
-          Rating: {product.rating.rate} ({product.rating.count})
-        </p>
-        <h3 className="product-title">{product.title}</h3>
-        <p className="product-price">Price: {product.price}</p>
-        {/* <p className="product-description">{product.description}</p> */}
-        {/* <p className="product-category">{product.category}</p> */}
-      </li>
-      <dialog
-        ref={dialogRef}
-        key={`dialog_${product.id}`}
-        className="product-dialog"
-      >
-        <p>This is a dialog box.</p>
-        <button
-          autoFocus
-          onClick={closeDialog}
-          onKeyUp={(e) => {
-            if (e.key === "Enter") closeDialog();
-          }}
-          onKeyDown={(e) => {
-            e.preventDefault();
-            if (e.key === " ") closeDialog();
-          }}
-        >
-          Close
-        </button>
-      </dialog>
+      <ShopItemCard openDialog={openDialog} product={product} />
+      <ShopItemDialog
+        closeDialog={closeDialog}
+        dialogRef={dialogRef}
+        itemId={product.id}
+      />
     </>
   );
 }
