@@ -43,6 +43,8 @@ function ShopItemCard({ product, openDialog }: ShopItemCard) {
 function ShopItemDialog({ dialogRef, itemId, closeDialog }: ShopItemDialog) {
   const [product, setProduct] = useState<Product | null>(null);
   const [quantity, setQuantity] = useState(1);
+  // Fetching from the api for demonstration purposes, otherwise,
+  // it would be more effecient to use the data we've already fetched.
   useFetchGet({ link: `products/${itemId}`, setter: setProduct });
   const { setCart } = useShoppingCartContext();
   return (
@@ -125,7 +127,15 @@ function ShopItemDialog({ dialogRef, itemId, closeDialog }: ShopItemDialog) {
                     },
                   })
                 );
-                alert("Item has been added!");
+                closeDialog();
+              }}
+              // onKeyUp={(e) => e.preventDefault()}
+              onKeyDown={(e) => e.preventDefault()}
+              onKeyUp={async (e) => {
+                if (e.key !== "Tab") e.preventDefault();
+                if (e.key === "Enter" || e.key === " ") {
+                  closeDialog();
+                }
               }}
             >
               Add to Cart

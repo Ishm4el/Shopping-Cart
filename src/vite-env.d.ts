@@ -1,5 +1,7 @@
 /// <reference types="vite/client" />
 
+type setCart = React.Dispatch<React.SetStateAction<Cart>>;
+
 interface Cart {
   [key: string]: {
     title: string;
@@ -11,7 +13,7 @@ interface Cart {
 
 interface CartContext {
   cart: Cart;
-  setCart: React.Dispatch<any>;
+  setCart: setCart;
 }
 
 interface Product {

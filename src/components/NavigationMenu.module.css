@@ -113,3 +113,7 @@
   justify-content: space-around;
   width: 100%;
 }
+
+body:has(.dialog[open]) {
+  overflow: hidden;
+}
