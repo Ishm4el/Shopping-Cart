@@ -178,7 +178,7 @@ function ShopList() {
     return (
       <ul className="list-product">
         {products.map((product: Product) => (
-          <ShopItem product={product} />
+          <ShopItem product={product} key={`ShopItem-${product.id}`} />
         ))}
       </ul>
     );

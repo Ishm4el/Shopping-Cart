@@ -39,7 +39,7 @@ function Left({ logo, title }: { logo: string; title: string }) {
 
 function RightLinks({ link }: { link: { title: string; hyperlink: string } }) {
   return (
-    <li>
+    <li key={link.title}>
       <Link to={link.hyperlink} className={styles["link"]}>
         {link.title}
       </Link>
@@ -62,7 +62,7 @@ function Right({ links }: { links: { title: string; hyperlink: string }[] }) {
     <div className={styles["right"]}>
       <ul className={styles["ul"]}>
         {links.map((link) => (
-          <RightLinks link={link} />
+          <RightLinks link={link} key={link.hyperlink} />
         ))}
         <li>
           <a
