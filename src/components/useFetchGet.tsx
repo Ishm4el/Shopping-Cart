@@ -14,6 +14,6 @@ export default function useFetchGet({
       .then((res) => res.json())
       .then((resJson) => setter(resJson))
       .catch(() => setError(true));
-  });
+  }, []);
   return error;
 }

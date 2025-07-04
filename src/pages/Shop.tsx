@@ -147,7 +147,7 @@ function ShopItemDialog({ dialogRef, itemId, closeDialog }: ShopItemDialog) {
   );
 }
 
-function ShopItem({ product }: { product: Product }) {
+function ShopItem({ product }: ShopItem) {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   const openDialog = () => {

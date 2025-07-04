@@ -17,12 +17,12 @@
   list-style: none;
   padding: 5px 5px;
   margin: 0;
-  /* display: grid;
-  grid-template-columns: repeat(4, 1fr); */
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* display: flex;
   flex-flow: row wrap;
   overflow: scroll;
-  height: auto;
+  height: auto; */
   gap: 1%;
 }
 
@@ -60,7 +60,7 @@
 .product-image-container {
   align-self: center;
   padding: 100px 0;
-  margin: 0.25vw;
+  margin: 0.5vw;
   max-width: 100%;
   height: 50%;
   width: 10vw;
@@ -134,7 +134,9 @@ body:has(.product-dialog[open]) {
 
 @media (max-width: 1000px) {
   .list-product {
-    gap: 2vh;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2dvw;
   }
 
   .card-product {
@@ -143,10 +145,16 @@ body:has(.product-dialog[open]) {
 
   .product-image-container {
     width: 20vw;
+    padding: 2vw;
   }
 }
 
 @media (max-width: 500px) {
+  .list-product {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   .card-product {
     flex: 1 0 90%;
     padding: 2vw;

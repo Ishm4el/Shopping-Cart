@@ -92,4 +92,6 @@ h6 {
   --navigation-height: 5dvh;
   --main-height: 95dvh;
   --body-margin: 20dvw;
+  --body-margin-medium: 10dvw;
+  --body-margin-small: 5dvw;
 }

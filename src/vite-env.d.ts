@@ -26,6 +26,10 @@ interface Product {
   rating: { rate: number; count: number };
 }
 
+interface ShopItem {
+  product: Product;
+}
+
 interface Products extends Array<Product> {}
 
 interface ShopItemDialog {

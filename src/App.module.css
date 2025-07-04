@@ -1,3 +1,15 @@
 .main {
   margin: 0 var(--body-margin);
 }
+
+@media (max-width: 1000px) {
+  .main {
+    margin: 0 var(--body-margin-medium);
+  }
+}
+
+@media (max-width: 500px) {
+  .main {
+    margin: 0 var(--body-margin-small);
+  }
+}

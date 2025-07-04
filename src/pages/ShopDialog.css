@@ -85,6 +85,10 @@
   font-size: 1.25rem;
 }
 
+.product-dialog-controlls > button:hover {
+  cursor: pointer;
+}
+
 .label {
   margin-left: auto;
 }
@@ -93,8 +97,14 @@
   padding: 0 1vw;
 }
 
+@media (max-width: 1000px) {
+  .product-dialog {
+    width: 85vw;
+  }
+}
+
 @media (max-width: 500px) {
   .product-dialog {
-    width: 90vw;
+    width: 100vw;
   }
 }
