@@ -83,18 +83,24 @@
   align-items: center;
   gap: 0.5vw;
   font-size: 1.25rem;
+  /* margin-bottom: 1vh; */
+  padding-bottom: 1vh;
+}
+
+#quantity {
+  width: 3rem;
 }
 
 .product-dialog-controlls > button:hover {
   cursor: pointer;
 }
 
-.label {
-  margin-left: auto;
-}
-
 .product-dialog-controlls button {
   padding: 0 1vw;
+}
+
+.label {
+  margin-left: auto;
 }
 
 @media (max-width: 1000px) {
@@ -106,5 +112,8 @@
 @media (max-width: 500px) {
   .product-dialog {
     width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    max-height: 100%;
   }
 }
